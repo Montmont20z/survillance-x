@@ -32,7 +32,7 @@ const Sidebar = () => {
         </div>
       </div>
       {/* Bottom Elements */}
-      <Link to='login' >
+      <Link to='/login' >
       <div className="pl-5 pt-2 flex items-center my-1 mr-2 rounded-md h-8 cursor-pointer">
         <IoLogOutOutline color='gray' className='m-1' />
         <div className={`font-inter font-medium text-gray-400 `} >Logout</div>
