@@ -9,7 +9,7 @@ const Infrared = () => {
     //on load read database infrared
 
     return (
-    <div className='h-22 bg-white rounded-md' >
+    <div className='h-22 w-fit bg-white rounded-md m-2 p-2' >
         <div className="flex items-center m-3">
             <RiScanFill />
             <div className='font-inter ml-2 text-lg' >Infrared</div>
