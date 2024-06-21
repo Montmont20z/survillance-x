@@ -13,7 +13,7 @@ const Sidebar = () => {
     const isRecords = location.pathname === '/records';
 
   return (
-    <div className='flex flex-col bg-gray-50 h-screen w-48 shrink-0 justify-between overflow-y-scrikk min-w-210 hide-scrollbar ' >
+    <div className='flex flex-col bg-gray-50 h-screen w-48 shrink-0 justify-between overflow-y-scrikk min-w-210 hide-scrollbar rounded-b-xl' >
       {/* Top Elements */}
       <div className="">
         <div className='font-bold pl-5 pt-2 mb-5 font-inter' >Surveillance X</div>
