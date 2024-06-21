@@ -32,6 +32,9 @@ const Login = () => {
           onChange={(e) => setPassword(e.target.value)}
           value={password}
         />
+        {/* set on click */}
+        {/* query db */}
+        {/* validate user input */}
         <button className='bg-blue-500 text-white text-semibold text-2xl rounded-sm py-1 px-6 mt-6' onClick={login} >
           Login
         </button>

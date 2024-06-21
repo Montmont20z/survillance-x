@@ -10,6 +10,7 @@ const CamCard = ({ src, number }) => {
         <div className="font-inter px-3">Cam {number}</div>
         <HiDotsVertical className='ml-10' />
       </div>
+      {/* on click */}
       <ReactPlayer url={src} width='184px' height='120px' loop playing={true} />
     </div>
   )

@@ -49,6 +49,8 @@ const FilterButtons = () => {
                 onChange={(e) => (setEndTime(e.target.value))}
                 value={endTime}
             />
+            {/* set onclick */}
+            {/* function to query database (date time) => {} */}
             <button className='flex items-center justify-center bg-blue-500 rounded-lg w-28 h-8 shrink-0 m-4 ml-10' >
                 <FaFilter color='white' />
                 <div className="text-inter text-white pl-1">Filter</div>

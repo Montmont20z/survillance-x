@@ -6,7 +6,6 @@ import { IoLogOutOutline } from "react-icons/io5";
 
 
 const Sidebar = () => {
-  console.log('');
 
     const location = useLocation();
 

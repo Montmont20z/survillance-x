@@ -14,7 +14,16 @@ const Home = () => {
   const handleAreaClick = (index) => {
     const newHighlight = isHighlight.map((_, i) => i === index);
     setIsHighlight(newHighlight);
+    //check isHighlight fn
   }
+
+  //on load get all videos for camera 11, 12, 13
+  //data store in footage
+
+  //check which isHighlight element is true, display that area cam card 
+
+  //set main cam trigger
+  //change the src of MainCam component 
 
   return (
     <div className='flex flex-row bg-slate-100 ' >

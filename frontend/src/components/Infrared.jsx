@@ -6,7 +6,9 @@ import InfraredArea from './InfraredArea';
 const Infrared = () => {
     const area = [1,2,3,4];
 
-  return (
+    //on load read database infrared
+
+    return (
     <div className='h-22 bg-white rounded-md' >
         <div className="flex items-center m-3">
             <RiScanFill />
