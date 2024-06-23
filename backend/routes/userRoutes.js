@@ -14,7 +14,7 @@ router.post('/', async (request, response) => {
           !request.body.password 
         ) {
           return response.status(400).send({
-            message: 'Send all required fields: title, author, publishYear',
+            message: 'Send all required fields: userID, password',
           });
         }
         const newUser = {

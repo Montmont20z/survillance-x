@@ -1,4 +1,5 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import axios from "axios";
 import Sidebar from '../components/Sidebar'
 import Area from '../components/Area';
 import CamCard from '../components/CamCard';
