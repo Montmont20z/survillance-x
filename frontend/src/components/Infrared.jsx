@@ -23,31 +23,33 @@ const Infrared = () => {
           });
       }, []); 
 
+      // split infrared into group of 4
+      var groupedInfrared = [];
+      for (let i = 0; i < infrared.length; i += 4){
+        groupedInfrared.push(infrared.slice(i, i+4));
+      }
+
     return (
     <div className='h-22 w-fit bg-white rounded-md m-2 p-2' >
         <div className="flex items-center m-3">
             <RiScanFill />
             <div className='font-inter ml-2 text-lg' >Infrared</div>
         </div>
-        <div className='flex flex-col' >
-            <div className='flex flex-col'>
-                {infrared && infrared.map((inf, index) => (
-                    <InfraredArea key={index} number={inf.area} color={inf.status}/>
-                ))}
-            </div>
-            {/* <div className="flex flex-col">
-                {area.map((area) => (<InfraredArea number={area} color={area % 2 === 0} />))}
-            </div>
-            <div className="flex flex-col">
-                {area.map((area) => (<InfraredArea number={area+4} color={area % 2 === 0} />))}
-            </div>
-            <div className="flex flex-col">
-                {area.map((area) => (<InfraredArea number={area+8} color={area % 2 === 0} />))}
-            </div>
-            <div className="flex flex-col">
-                {area.map((area) => (<InfraredArea number={area+12} color={area % 2 === 0} />))}
-            </div> */}
-        </div>
+        <div className='flex flex-row'>
+            {!infrared ? (
+                <div className='font-inter ml-2 text-lg' >No infrared data founded</div>
+            ) : (
+                <>
+                    {groupedInfrared.map((group, index) => (
+                        <div key={index} className='flex flex-col' >
+                            {group.map((inf, innerIndex) => (
+                                <InfraredArea key={innerIndex} number={inf.area} color={inf.status} />
+                            ))}
+                        </div>
+                    ))}
+                </>
+            )}
+        </div>       
     </div>
   )
 }
