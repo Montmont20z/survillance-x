@@ -11,6 +11,7 @@ import Infrared from '../components/Infrared';
 
 const Home = () => {
   const [ isHighlight, setIsHighlight ] = useState([true,false,false,false]);
+  const [ videoURL, setVideoURL ] = useState([]);
 
   const handleAreaClick = (index) => {
     const newHighlight = isHighlight.map((_, i) => i === index);
@@ -20,7 +21,16 @@ const Home = () => {
 
   //on load get all videos for camera 11, 12, 13
   //data store in footage
-
+  useEffect(() => {
+    axios
+      .get('http://localhost:5000/video')
+      .then((response) => {
+        setVideoURL(response.data);
+      })
+      .catch((error) => {
+        console.log(error.message);
+      });
+  });
   //check which isHighlight element is true, display that area cam card 
 
   //set main cam trigger
