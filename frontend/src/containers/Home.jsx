@@ -4,6 +4,7 @@ import Sidebar from '../components/Sidebar'
 import Area from '../components/Area';
 import CamCard from '../components/CamCard';
 
+import footage from '../assets/footage.mp4';
 import ReactPlayer from 'react-player';
 import MainCam from '../components/MainCam';
 import Infrared from '../components/Infrared';
@@ -11,9 +12,6 @@ import Infrared from '../components/Infrared';
 const Home = () => {
   const [ isHighlight, setIsHighlight ] = useState([true,false,false,false]);
   const [ videoURL, setVideoURL ] = useState([]);
-
-  //const camRoute = ['cams[]=1&cams[]=2&cams[]=3', 'cams[]=4&cams[]=5&cams[]=6', 'cams[]=7&cams[]=8&cams[]=9'];
-  //const route = `http://localhost:5000/video?${camRoute[0]}`;
 
   const handleAreaClick = (index) => {
     const newHighlight = isHighlight.map((_, i) => i === index);
@@ -27,14 +25,12 @@ const Home = () => {
     axios
       .get('http://localhost:5000/video')
       .then((response) => {
-        console.log("video: ", response.data);
-        //setVideoURL(response.data);
+        setVideoURL(response.data);
       })
       .catch((error) => {
         console.log(error.message);
       });
   });
-
   //check which isHighlight element is true, display that area cam card 
 
   //set main cam trigger
@@ -53,11 +49,11 @@ const Home = () => {
                 <Area number='4' isHighlight={isHighlight[3]} handleAreaClick={() => handleAreaClick(3)} />            
             </div>
             <div className="flex flex-row ">
-              <CamCard src={'./uploads/vid4.mp4'} number={1} />
-              <CamCard src={'./uploads/vid2.mp4'} number={2} />
-              <CamCard src={'./uploads/vid3.mp4'} number={3} />
+              <CamCard src={footage} number={1} />
+              <CamCard src={footage} number={2} />
+              <CamCard src={footage} number={3} />
             </div>
-            <MainCam src={'../assets/vid1.mp4'} />
+            <MainCam src={footage} />
             <Infrared />
         </div>
     </div>

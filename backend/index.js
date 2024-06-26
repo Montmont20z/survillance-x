@@ -4,12 +4,6 @@ import cors from "cors";
 import mongoose from "mongoose";
 import userRoute from './routes/userRoutes.js';
 import infraredRoute from './routes/infraredRoutes.js';
-import videoRoute from './routes/videoRoutes.js';
-import path from "path";
-
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 const app = express();
 
@@ -23,7 +17,6 @@ app.get('/', (request, response) => {
 
 app.use('/user', userRoute);
 app.use('/infrared', infraredRoute);
-app.use('/video', videoRoute);
 
 mongoose
     .connect(mongoDBURL)
