@@ -12,29 +12,74 @@ import Infrared from '../components/Infrared';
 const Home = () => {
   const [ isHighlight, setIsHighlight ] = useState([true,false,false,false]);
   const [ videoURL, setVideoURL ] = useState([]);
+  const [ mainCamVideoURL, setMainCamVideoURL ] = useState([]);
+  const [ camCard, setCamCard ] = useState([]);
+
+  // const area1 = 'cams[]=11&cams[]=12&cams[]=13';
+  // const area2 = 'cams[]=21&cams[]=22&cams[]=23';
+  // const area3 = 'cams[]=31&cams[]=32&cams[]=33';
+  // const area4 = 'cams[]=41&cams[]=42&cams[]=43';
+
+  const area1 = 'cams[]=1&cams[]=2&cams[]=3';
+  const area2 = 'cams[]=4&cams[]=5&cams[]=6';
+  const area3 = 'cams[]=7&cams[]=8&cams[]=9';
+  const area4 = 'cams[]=8&cams[]=9&cams[]=43';
 
   const handleAreaClick = (index) => {
     const newHighlight = isHighlight.map((_, i) => i === index);
     setIsHighlight(newHighlight);
-    //check isHighlight fn
+   
+    let area;
+    switch (index) {
+      case 0:
+        area = area1;
+        break;
+      case 1:
+        area = area2;
+        break;
+      case 2:
+        area = area3;
+        break;
+      case 3:
+        area = area4;
+        break;
+      default:
+        area = '';
+    }
+
+    axios
+    .get(`http://localhost:5000/videos?${area}`)
+    .then((response) => {
+      console.log('URL: ', response.data.videos);
+      setVideoURL(response.data.videos);
+      setMainCamVideoURL(response.data.videos[0]);
+
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
   }
 
   //on load get all videos for camera 11, 12, 13
-  //data store in footage
   useEffect(() => {
     axios
-      .get('http://localhost:5000/video')
+      .get('http://localhost:5000/videos?cams[]=1&cams[]=2&cams[]=3')
       .then((response) => {
-        setVideoURL(response.data);
+        console.log('URL: ', response.data.videos);
+        setVideoURL(response.data.videos);
+        setMainCamVideoURL(response.data.videos[0]);
       })
       .catch((error) => {
         console.log(error.message);
       });
-  });
-  //check which isHighlight element is true, display that area cam card 
+  }, []);
 
+   
   //set main cam trigger
   //change the src of MainCam component 
+  const handleCamClick = (index) => {
+    
+  }
 
   return (
     <div className='flex flex-row bg-slate-100 ' >
@@ -49,11 +94,14 @@ const Home = () => {
                 <Area number='4' isHighlight={isHighlight[3]} handleAreaClick={() => handleAreaClick(3)} />            
             </div>
             <div className="flex flex-row ">
-              <CamCard src={footage} number={1} />
-              <CamCard src={footage} number={2} />
-              <CamCard src={footage} number={3} />
+              <CamCard src={videoURL[0]} number={1} />
+              <CamCard src={videoURL[1]} number={2} onClick={setMainCamVideoURL[videoURL[1]]}/>
+              <CamCard src={videoURL[2]} number={3} />
+              {/* <CamCard src={'http://localhost:5000/videos/vid1.mp4'} number={4} /> */}
+              {/* <CamCard src={videoURL[2]} number={5} /> */}
+
             </div>
-            <MainCam src={footage} />
+            <MainCam src={mainCamVideoURL} />
             <Infrared />
         </div>
     </div>

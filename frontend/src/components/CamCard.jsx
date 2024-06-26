@@ -3,7 +3,7 @@ import { HiDotsVertical } from "react-icons/hi";
 import ReactPlayer from 'react-player';
 
 
-const CamCard = ({ src, number }) => {
+const CamCard = ({ src, number, onClick }) => {
   return (
     <div className='m-2 p-2 bg-white rounded-md' >
       <div className="flex flex-row items-center justify-between">
