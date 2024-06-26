@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { FaFilter } from "react-icons/fa";
 import MainCam from './MainCam';
-import video from '../assets/footage.mp4';
+import video from '../assets/vid1.mp4';
 
 
 const FilterButtons = () => {

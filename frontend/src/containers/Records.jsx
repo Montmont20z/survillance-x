@@ -4,7 +4,7 @@ import FilterButtons from '../components/FilterButtons'
 import MainCam from '../components/MainCam'
 import CamCard from '../components/CamCard'
 
-import video from '../assets/footage.mp4';
+import video from '../assets/vid1.mp4';
 
 const Records = () => {
   return (
